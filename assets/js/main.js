@@ -13,15 +13,19 @@ var acctBalance
 var studentBalance
 var parentBalance
 
+let acctBalance = document.getElementById("acctBalance")
+let result = document.getElementById("result")
+let acctBalance = 240
+
+})
+
+// //show current Balance
+// document.getElementById('aactBalance').value = "Balance:$"
+// //play the Stacked game
+
+//Account Balance, Deposit, Withdraw Fun
 
 
-let acctBalance = 0;
-    studentBalance = 120;
-    parentBalance = 240;
-
-//show current Balance
-document.getElementById('aactBalance').value = "Balance:$"
-//play the Stacked game
 
 
 function startStacked(){
