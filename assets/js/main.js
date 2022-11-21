@@ -150,11 +150,51 @@ const textNodes = [
             }
           ]
         },
+        {
+          id: 8,
+          text: 'You must pay $15 to pick up your child with a ridesharing app after your flat tire.',
+          nextText: 9
+        }
 
+        {
+          id:9,
+          text:'It is time to pay for your weekly groceries. Purchase $50 in food products.',
+          nextText:10
+        },
+      ]
+      {
+        id: 10,
+        text:'Your employers offer you the opportunity to get overtime (OT) for a time and a half. This could increase your earnings by $22. However, you will spend less time with your child.',
+        options:[
+          {
+            text: 'Accept Offer',
+            nextText: 11
+          },
+          {
+            text: 'Decline Offer',
+            nextText: 12
+          }
+        ]
+      },
 
+      {
+        id:11,
+        text:'While at work, a generous customer left you a $50 tip! Small blessings :)',
+        nextText: 12,
+      },
+    ]
+      {
+        id: 12,
+        text: 'Oh no, your house was burglared!',
+        options:[
+          {
+            text: 'Pay $75 in replacements of essential items.',
+          }
+        ]
+      }
 
           {
-            id: 10,
+            id: 15,
             text: 'Oh no, you ran out of money!',
                 options: [
                   {
