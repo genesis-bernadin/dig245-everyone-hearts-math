@@ -94,13 +94,13 @@ const textNodes = [
       options: [
         {
           text: 'Car | Gas: $35 per week // $140 per month',
-          requiredState: (currentState) => currentState.transportation,
+          requiredState: (currentState) => currentState.car,
           setState: { car: true, public: false },
           nextText: 4
         },
         {
           text: 'Public Transportation | Ticket: $22.5 per week // $85 per month',
-          requiredState: (currentState) => currentState.transportation,
+          requiredState: (currentState) => currentState.public,
           setState: { car: false, public: true },
           nextText: 3
         },
@@ -108,12 +108,18 @@ const textNodes = [
         {
           id: 3,
           text: 'Congratulations, you saved money on gas! However, in Charlotte, the public transportation system is unreliable when you need to travel outside the Downtown area. Please manage your time wisely!',
-          nextText: 4
-        }
+          nextText: 5
+        },
+      ]
+        {
+          id: 4,
+          text:"Nice, you invested in your own vehicle and now you can commute comfortably. You have more agency to  meet all of your destination needs."
+          nextText: 5,
+        },
       ]
 
         {
-          id: 4,
+          id: 5,
           text: 'Alert: Your water bill is due today',
           options: [
             {
@@ -122,9 +128,29 @@ const textNodes = [
             },
           ]
           {
-            id:4,
-            text: "Oh no, "
+            id:6,
+            text: "Oh no, your car caught a flat tire on your way to your destination.",
+            requiredState: (currentState) => currentState.car,
+            nextText: 7
           }
+        ]
+      },
+        {
+          id:7,
+          text: 'Solution',
+          options:[
+            {
+              text: 'Replace tire for $60',
+              setState: { car: true },
+              nextText: 8
+            },
+            {
+              text: 'Take public transportation',
+              nextText: 3
+            }
+          ]
+        },
+
 
 
           {
