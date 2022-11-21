@@ -94,22 +94,54 @@ const textNodes = [
       options: [
         {
           text: 'Car | Gas: $35 per week // $140 per month',
-          requiredState: (currentState) => currentState.blueGoo,
-          setState: { car: false, transport: true },
-          nextText: 3
+          requiredState: (currentState) => currentState.transportation,
+          setState: { car: true, public: false },
+          nextText: 4
         },
         {
           text: 'Public Transportation | Ticket: $22.5 per week // $85 per month',
-          requiredState: (currentState) => currentState.blueGoo,
-          setState: { car: false, transport: true },
+          requiredState: (currentState) => currentState.transportation,
+          setState: { car: false, public: true },
           nextText: 3
         },
-      }
+        ]
+        {
+          id: 3,
+          text: 'Congratulations, you saved money on gas! However, in Charlotte, the public transportation system is unreliable when you need to travel outside the Downtown area. Please manage your time wisely!',
+          nextText: 4
+        }
       ]
 
+        {
+          id: 4,
+          text: 'Alert: Your water bill is due today',
+          options: [
+            {
+              text: 'Pay the $50 to cut it back on',
+              nextText: 4
+            },
+          ]
+          {
+            id:4,
+            text: "Oh no, "
+          }
 
-startGame()
 
+          {
+            id: 10,
+            text: 'Oh no, you ran out of money!',
+                options: [
+                  {
+                    text: 'Restart Stacked'
+                    nextTest: -1;
+                  }
+              ]
+      }
+    ]
+
+
+
+startStacked()
 
 
 
