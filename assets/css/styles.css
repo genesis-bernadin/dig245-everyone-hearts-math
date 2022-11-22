@@ -6,6 +6,7 @@
 }
 html{
   background-color: #12130F;
+  color: #12130F;
 }
 body{
   background-color: #12130F;
@@ -96,4 +97,14 @@ header{
   padding: 5px 10px;
   color: #8F8073;
   outline: none;
+}
+
+.text{
+  background-color: pink;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 50px;
+  justify-content: center;
+  padding:0 200px;
+
 }
