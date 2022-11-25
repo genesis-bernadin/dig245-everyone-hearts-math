@@ -20,7 +20,10 @@ body{
 }
 .container{
   width: 800px;
-  max-width: 80%
+  max-width: 80%;
+  color: #DADADA;
+  font-size: 30px;
+  justify-content: center;
 }
 
 .center {
@@ -100,7 +103,7 @@ header{
 }
 
 .text{
-  background-color: pink;
+  backcolor: #8F8073;
   font-family: "Roboto";
   font-weight: bold;
   font-size: 50px;
