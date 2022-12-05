@@ -2,7 +2,9 @@
 /* css */
 *, *::before, *::after {
   box-sizing: border-box;
-  font-family: "Roboto";
+  font-family: "roboto";
+  text-align: center;
+  vertical-align: middle;
 }
 html{
   background-color: #12130F;
@@ -11,12 +13,18 @@ html{
 body{
   background-color: #12130F;
   color: black;
-  font-family: "Roboto";
+  font-family: "roboto";
   font-weight: normal;
   font-size: 20px;
   align-items:  center;
   justify-content: center;
 
+}
+
+myAlert{
+  color: #FFD0D0;
+  font-size: 50px;
+  text-align: center;
 }
 .container{
   width: 800px;
@@ -24,6 +32,7 @@ body{
   color: #DADADA;
   font-size: 30px;
   justify-content: center;
+
 }
 
 .center {
@@ -37,11 +46,13 @@ body{
   display: flex;
   justify-content: center;
   padding:0 280px;
+  text-align: center;
+  vertical-align: middle;
 }
 
 h2{
   color: #8F8073;
-  font-family: "Roboto";
+  font-family: "roboto";
   font-weight: bold;
   font-size: 50px;
   justify-content: center;
@@ -51,7 +62,7 @@ h2{
 
 h3{
   color: #8F8073;
-  font-family: "Roboto";
+  font-family: "roboto";
   font-weight: bold;
   font-size: 100px;
   justify-content: center;
@@ -61,7 +72,7 @@ h3{
 
 header{
   color: #8F8073;
-  font-family: "Roboto";
+  font-family: "roboto";
   font-weight: bold;
   font-size: 60px;
   justify-content: center;
@@ -71,7 +82,7 @@ header{
 
 .subheader{
   color: #8F8073;
-  font-family: "Roboto";
+  font-family: "roboto";
   font-weight: bold;
   font-size: 40px;
   padding:0 330px;
@@ -79,7 +90,7 @@ header{
 }
 .character{
   color: #DADADA;
-  font-family: "Roboto";
+  font-family: "roboto";
   font-weight: bold;
   font-size: 20px;
   padding:0 330px;
@@ -91,6 +102,8 @@ header{
   grid-template-columns: repeat(2, auto);
   gap: 10px;
   margin-top: 20px;
+  text-align: center;
+  align-items: middle;
 }
 
 .btn {
@@ -98,16 +111,21 @@ header{
   border: 1px solid hsl(0, 0%, 85%);
   border-radius: 5px;
   padding: 5px 10px;
-  color: #8F8073;
+  color: #5B9279;
+  border-style: double;
+  border-color:#5B9279;
   outline: none;
 }
 
-.text{
+text{
   backcolor: #8F8073;
-  font-family: "Roboto";
+  font-family: "roboto";
   font-weight: bold;
   font-size: 50px;
-  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
   padding:0 200px;
+  border-style: double;
+  border-color:#5B9279;
 
 }

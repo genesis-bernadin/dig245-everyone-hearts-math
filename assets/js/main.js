@@ -2,7 +2,7 @@ const textElement = document.getElementById('text');
 const optionButtonsElement = document.getElementById('option-buttons');
 
 let state = {};
-let currentBalance = 100;
+let currentBalance = 290;
 
 function startStacked() {
   state = {};
@@ -11,7 +11,13 @@ function startStacked() {
 
 function showTextNode(textNodeIndex) {
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
-  textElement.innerText = textNode.text;
+
+  if (textNode.text == '') {
+    textElement.innerText = textNode.balance();
+
+  } else {
+    textElement.innerText = textNode.text;
+  }
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
@@ -32,33 +38,75 @@ function showOption(option) {
 }
 
 function selectOption(option) {
-  const nextTextNodeId = option.nextText;
+  let nextTextNodeId = option.nextText;
   if (nextTextNodeId <= 0) {
+    currentBalance = 290;
     return startStacked();
+  }
+
+  if (currentBalance <=0) {
+    nextTextNodeId = 18;
+  }
+  if (option.acctChange) {
+    currentBalance += option.acctChange;
+    console.log(currentBalance);
   }
   state = Object.assign(state, option.setState);
   showTextNode(nextTextNodeId);
+
   // if(option.callback){
   //   option.callback()
   // }
 
-  if(option.acctChange){
-    currentBalance += option.acctChange;
-    console.log(currentBalance);
-  }
+
 
 }
 
 const textNodes = [{
     id: 1,
-    text: 'Great, you are a 28 year old single parent of one. In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Dinner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt.',
+    text: 'A child born into poverty in Charlotte, NC will most likely die in poverty...',
     options: [{
-        text: 'Start Challenge',
+      text: 'Continue',
+      nextText: 2,
+    }, ]
+  },
+  {
+    id: 2,
+    text: 'In Charlotte, NC, an estimated 11.9% of the population live below the poverty line...',
+    options: [{
+      text: 'Continue',
+      nextText: 3,
+    }, ]
+  },
+  {
+    id: 3,
+    text: 'Among the most affected demographics in poverty are Blacks (44%), Whites (31%), and Hispanics (26%), with female populations especially vulnerable.',
+    options: [{
+      text: 'Continue',
+      nextText: 4,
+    }, ]
+  },
+  {
+    id: 4,
+    text: 'How well will you survive when the odds are stacked against you...?',
+    options: [{
+      text: 'Start Challenge',
+      nextText: 5,
+    }, ]
+  },
+
+  {
+    id: 5,
+    text: "",
+    balance: function() {
+      return 'Balance: ' + currentBalance + "\n" + 'Great, you are a 28 year old single parent of one.  In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Dinner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt.' + "\n" + ' Are you ready to start the challenge?';
+    },
+    options: [{
+        text: 'Challenge Accepted',
         setState: {
           transportation: false
         },
-        nextText: 2,
-        acctChange: -11
+        nextText: 6,
         // callback: function(){
         // alert(123)
         // }
@@ -68,25 +116,30 @@ const textNodes = [{
     ]
   },
   {
-    id: 2,
-    text: 'Choose Your Housing',
+    id: 6,
+    text: "",
+    balance: function() {
+      return 'Balance: ' + currentBalance + "\n" + 'Choose Your Housing';
+
+    },
     options: [{
         text: '1 Bedroom Apt | Medium Risk Area | 30-Minute Commute',
 
-        nextText: 3,
-        acctChange: -50,
+        nextText: 7,
       },
       {
         text: '2 Bedroom Apt | High Risk Area | 5-Minute Commute',
-        nextText: 3,
-        acctChange: -60
+        nextText: 7,
       },
 
     ]
   },
   {
-    id: 3,
-    text: 'Choose your Transportation',
+    id: 7,
+    text: "",
+    balance: function() {
+      return 'Balance: ' + currentBalance + "\n" + 'Choose your Transportation';
+    },
     options: [{
         text: 'Car | Gas: $35 per week // $140 per month',
         setState: {
@@ -96,10 +149,11 @@ const textNodes = [{
           transportation: true,
           car: true
         },
-        nextText: 4
+        nextText: 8,
+        acctChange: -35
       },
       {
-        text: 'Public Transportation | Ticket: $22.5 per week // $85 per month',
+        text: 'Balance: ' + currentBalance + "\n" + 'Public Transportation | Ticket: $22.5 per week // $85 per month',
         setState: {
           transportation: false
         },
@@ -107,113 +161,154 @@ const textNodes = [{
           transportation: true,
           public: true
         },
-        nextText: 5
-      },
-
-    ]
-  },
-  {
-    id: 4,
-    text: 'Nice, you invested in your own vehicle and now you can commute comfortably. You have more agency to  meet all of your destination needs.',
-    requiredState: (currentState) => currentState.car,
-    options: [{
-      text: 'Continue',
-      nextText: 6
-    }]
-  },
-  {
-    id: 5,
-    text: 'Congratulations, you saved money on gas! However, in Charlotte, the public transportation system is unreliable when you need to travel outside the Downtown area. Please manage your time wisely!',
-    options: [{
-      text: 'Continue',
-      nextText: 7
-    }]
-  },
-  {
-    id: 6,
-    text: 'Alert: Your water bill is due today',
-    options: [{
-      text: 'Pay the $50 to cut it back on',
-      nextText: 8
-    }]
-  },
-  {
-    id: 7,
-    text: 'Alert: Time for your weekly groceries!',
-    options: [{
-      text: 'Pay $100 on food and essentials',
-      nextText: 10
-    }]
-  },
-  {
-    id: 7,
-    text: 'Oh no, your car caught a flat tire on your way to your destination.',
-    requiredState: (currentState) => currentState.car,
-    options: [{
-        text: 'Replace tire for $60',
-        nextText: 8
-      },
-      {
-        text: 'Take public transportation',
-        setState: (currentState) => currentState.public,
-        nextText: 8
+        nextText: 9,
+        acctChange: -22.5
       },
 
     ]
   },
   {
     id: 8,
-    text: 'You must pay $15 to pick up your child with a ridesharing app after your flat tire.',
+    requiredState: (currentState) => currentState.car,
+    text: "",
+    balance: function() {
+      return 'Balance: ' + currentBalance + "\n" + 'Nice, you invested in your own vehicle and now you can commute comfortably. You have more agency to  meet all of your destination needs.';
+    },
     options: [{
       text: 'Continue',
-      nextText: 9
+      nextText: 10
     }]
   },
   {
     id: 9,
-    text: 'Your employers offer you the opportunity to get overtime (OT) for a time and a half. This could increase your earnings by $22. However, you will spend less time with your child.',
+    text: "",
+    balance: function() {
+      return 'Balance: ' + currentBalance + "\n" + 'Congratulations, you saved money on gas! However, in Charlotte, the public transportation system is unreliable when you need to travel outside the Downtown area. Please manage your time wisely!';
+    },
+    options: [{
+      text: 'Continue',
+      nextText: 11
+    }]
+  },
+  {
+    id: 10,
+    text: "",
+    balance: function() {
+      return 'Balance: ' + currentBalance + "\n" + 'Alert: Your water bill is due today';
+    },
+    options: [{
+      text: 'Pay the $50 to cut it back on',
+      nextText: 12,
+      acctChange: -50
+    }]
+  },
+  {
+    id: 11,
+    text:"",
+    balance: function(){
+      return 'Balance: ' + currentBalance + "\n" + 'Alert: Time for your weekly groceries!';
+    },
+    options: [{
+      text: 'Pay $290 on food and essentials',
+      nextText: 10,
+      acctChange: -290,
+    }]
+  },
+  {
+    id: 12,
+    requiredState: (currentState) => currentState.car,
+    text: "",
+    balance: function(){
+      return'Balance: ' + currentBalance + "\n" + 'Oh no, your car caught a flat tire on your way to your destination.';
+    },
+    options: [{
+        text: 'Replace tire for $60',
+        nextText: 13,
+        acctChange: -60
+      },
+      {
+        text: 'Take public transportation',
+        setState: (currentState) => currentState.public,
+        nextText: 9
+      },
+
+    ]
+  },
+  {
+    id: 13,
+    text: "",
+    balance: function(){
+      return 'Balance: ' + currentBalance + "\n" + 'You must pay $20 to pick up your child with a ridesharing app after your flat tire.'
+    },
+    options: [{
+      text: 'Continue',
+      nextText: 14,
+      acctChange: -20
+    }]
+  },
+  {
+    id: 14,
+    text:"",
+    balance: function(){
+      return 'Balance: ' + currentBalance + "\n" + 'Your employers offer you the opportunity to get overtime (OT) for a time and a half. This could increase your earnings by $22. However, you will spend less time with your child.'
+    },
     options: [{
         text: 'Accept Offer',
-        nextText: 11
+        nextText: 16
       },
       {
         text: 'Decline Offer',
-        nextText: 12,
+        nextText: 17,
       }
 
     ]
   },
   {
-    id: 10,
-    text: 'Oh no, your bus was delayed and you were 3 hours late to work! You lost $30 in expected tips.',
+    id: 15,
+    text:"",
+    balance: function(){
+      return 'Balance: ' + currentBalance + "\n" + 'Oh no, your bus was delayed and you were 3 hours late to work! You lost $30 in expected tips.'
+    },
     options: [{
       text: 'Deduct $30',
-      nextText: 11
+      nextText: 11,
+      acctChange: -30
     }]
   },
   {
-    id: 11,
-    text: 'While at work, a generous customer left you a $50 tip! Small blessings :)',
+    id: 16,
+    text:"",
+    balance: function(){
+      return 'Balance: ' + currentBalance + "\n" + 'While at work, a generous customer left you a $50 tip! Small blessings :)'
+    },
     options: [{
       text: 'Continue',
-      nextText: 12
+      nextText: 17,
+      acctChange: 50
     }]
   },
 
   {
-    id: 12,
-    text: 'Oh no, your house was burglared!',
+    id: 17,
+    text: "",
+    balance: function(){
+      return'Balance: ' + currentBalance + "\n" + 'Oh no, your house was burglared!'
+    },
     options: [{
       text: 'Pay $75 in replacements of essential items',
-      nextText: 13
+      nextText: 18,
+      acctChange: -75,
     }]
   },
   {
-    id: 13,
-    text: 'Oh no, you ran out of money!',
+    id: 18,
+    text: "",
+    balance: function(){
+      return 'Balance: ' + currentBalance + "\n" + 'Oh no, you ran out of money!'
+    },
     options: [{
       text: 'Restart Challenge',
-      nextText: -1
+      nextText: -1,
     }]
   },
 
