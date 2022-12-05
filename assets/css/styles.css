@@ -66,7 +66,7 @@ body{
   vertical-align: middle;
 }
 
-h2{
+/* h2{
   color: #8F8073;
   font-family: "roboto";
   font-weight: bold;
@@ -103,15 +103,15 @@ header{
   font-size: 40px;
   padding:0 330px;
 
-}
-.character{
+} */
+/* .character{
   color: #DADADA;
   font-family: "roboto";
   font-weight: bold;
   font-size: 20px;
   padding:0 330px;
 
-}
+} */
 
 .btn-grid {
   display: grid;
@@ -133,7 +133,7 @@ header{
   outline: none;
 }
 
-text{
+/* text{
   background-color: black;
   color: black;
   font-family: "roboto";
@@ -143,6 +143,6 @@ text{
   vertical-align: middle;
   padding:0 200px;
   border-style: double;
-  border-color:#5B9279;
+  border-color:#5B9279; */
 
 }
