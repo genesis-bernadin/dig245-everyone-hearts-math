@@ -88,7 +88,7 @@ const textNodes = [{
   },
   {
     id: 4,
-    text: 'How well will you survive when the odds are stacked against you...?',
+    text:'As such, many residents of Charlotte work off of minimum wage and  are forced to live paycheck to paycheck. This reality is not so easy to endure.' + "\n"  + 'How well will you survive when the odds are stacked against you...?',
     options: [{
       text: 'Start Challenge',
       nextText: 5,
@@ -99,7 +99,7 @@ const textNodes = [{
     id: 5,
     text: "",
     balance: function() {
-      return 'Balance: ' + currentBalance + "\n" + 'Great, you are a 28 year old single parent of one.  In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Dinner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt.' + "\n" + ' Are you ready to start the challenge?';
+      return 'Balance: ' + currentBalance + "\n" + 'Great, you are a 28 year old single parent of one.  In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Dinner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt. ' + "\n" + 'You have one week left until your next paycheck. Are you ready to start the challenge?';
     },
     options: [{
         text: 'Challenge Accepted',
@@ -209,9 +209,9 @@ const textNodes = [{
       return 'Balance: ' + currentBalance + "\n" + 'Alert: Time for your weekly groceries!';
     },
     options: [{
-      text: 'Pay $290 on food and essentials',
+      text: 'Pay $100 on food and essentials',
       nextText: 10,
-      acctChange: -290,
+      acctChange: -100,
     }]
   },
   {
@@ -238,7 +238,7 @@ const textNodes = [{
     id: 13,
     text: "",
     balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'You must pay $20 to pick up your child with a ridesharing app after your flat tire.'
+      return 'Balance: ' + currentBalance + "\n" + 'You must pay $20 to pick up your child with a ridesharing app after your flat tire.';
     },
     options: [{
       text: 'Continue',
@@ -250,7 +250,7 @@ const textNodes = [{
     id: 14,
     text:"",
     balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'Your employers offer you the opportunity to get overtime (OT) for a time and a half. This could increase your earnings by $22. However, you will spend less time with your child.'
+      return 'Balance: ' + currentBalance + "\n" + 'Your employers offer you the opportunity to get overtime (OT) for a time and a half. This could increase your earnings by $22. However, you will spend less time with your child.';
     },
     options: [{
         text: 'Accept Offer',
@@ -267,7 +267,7 @@ const textNodes = [{
     id: 15,
     text:"",
     balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'Oh no, your bus was delayed and you were 3 hours late to work! You lost $30 in expected tips.'
+      return 'Balance: ' + currentBalance + "\n" + 'Oh no, your bus was delayed and you were 3 hours late to work! You lost $30 in expected tips.';
     },
     options: [{
       text: 'Deduct $30',
@@ -279,7 +279,7 @@ const textNodes = [{
     id: 16,
     text:"",
     balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'While at work, a generous customer left you a $50 tip! Small blessings :)'
+      return 'Balance: ' + currentBalance + "\n" + 'While at work, a generous customer left you a $50 tip! Small blessings :)';
     },
     options: [{
       text: 'Continue',
@@ -292,19 +292,23 @@ const textNodes = [{
     id: 17,
     text: "",
     balance: function(){
-      return'Balance: ' + currentBalance + "\n" + 'Oh no, your house was burglared!'
+      return'Balance: ' + currentBalance + "\n" + 'Oh no, your house was burglared!';
     },
     options: [{
-      text: 'Pay $75 in replacements of essential items',
+      text: 'Pay $250 in replacements of essential items',
       nextText: 18,
-      acctChange: -75,
+      acctChange: -250,
     }]
   },
+
+
+
+
   {
     id: 18,
     text: "",
     balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'Oh no, you ran out of money!'
+      return 'Balance: ' + currentBalance + "\n" + 'Oh no, you ran out of money!';
     },
     options: [{
       text: 'Restart Challenge',

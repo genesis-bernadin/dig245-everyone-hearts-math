@@ -9,29 +9,45 @@
 html{
   background-color: #12130F;
   color: #12130F;
+  background: linear-gradient(-45deg, #000000, #D9D9D9, #5B9279, #5B9279);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+
 }
 body{
-  background-color: #12130F;
+  background-color: black;
   color: black;
   font-family: "roboto";
   font-weight: normal;
   font-size: 20px;
   align-items:  center;
   justify-content: center;
+  background: linear-gradient(-45deg, #000000, #D9D9D9, #5B9279, #5B9279);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
 
 }
 
-myAlert{
-  color: #FFD0D0;
-  font-size: 50px;
-  text-align: center;
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
+
+
 .container{
   width: 800px;
   max-width: 80%;
-  color: #DADADA;
+  color: black;
   font-size: 30px;
-  justify-content: center;
 
 }
 
@@ -39,7 +55,7 @@ myAlert{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:0 300px;
+  padding:0 200px;
 
 }
 .button{
@@ -111,14 +127,15 @@ header{
   border: 1px solid hsl(0, 0%, 85%);
   border-radius: 5px;
   padding: 5px 10px;
-  color: #5B9279;
+  color: black;
   border-style: double;
-  border-color:#5B9279;
+  border-color:black;
   outline: none;
 }
 
 text{
-  backcolor: #8F8073;
+  background-color: black;
+  color: black;
   font-family: "roboto";
   font-weight: bold;
   font-size: 50px;
