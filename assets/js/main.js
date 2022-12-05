@@ -91,7 +91,7 @@ const textNodes = [{
     text:'As such, many residents of Charlotte work off of minimum wage and  are forced to live paycheck to paycheck. This reality is not so easy to endure.' + "\n"  + 'How well will you survive when the odds are stacked against you...?',
     options: [{
       text: 'Start Challenge',
-      nextText: 5,
+      nextText: 5, 
     }, ]
   },
 
