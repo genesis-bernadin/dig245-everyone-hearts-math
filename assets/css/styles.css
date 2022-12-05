@@ -21,7 +21,7 @@ body{
   font-family: "roboto";
   font-weight: normal;
   font-size: 20px;
-  align-items:  center;
+  align-items:  middle;
   justify-content: center;
   background: linear-gradient(-45deg, #000000, #D9D9D9, #5B9279, #5B9279);
 	background-size: 400% 400%;
