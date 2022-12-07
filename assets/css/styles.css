@@ -2,7 +2,7 @@
 /* css */
 *, *::before, *::after {
   box-sizing: border-box;
-  font-family: "roboto";
+  font-family: "Roboto";
   text-align: center;
   vertical-align: middle;
 }
@@ -18,7 +18,7 @@ html{
 body{
   background-color: black;
   color: black;
-  font-family: "roboto";
+  font-family: "Roboto";
   font-weight: normal;
   font-size: 20px;
   align-items: center;
@@ -90,7 +90,7 @@ body{
 
 /* h2{
   color: #8F8073;
-  font-family: "roboto";
+  font-family: "Roboto";
   font-weight: bold;
   font-size: 50px;
   justify-content: center;
@@ -100,7 +100,7 @@ body{
 
 h3{
   color: #8F8073;
-  font-family: "roboto";
+  font-family: "Roboto";
   font-weight: bold;
   font-size: 100px;
   justify-content: center;
@@ -110,7 +110,7 @@ h3{
 
 header{
   color: #8F8073;
-  font-family: "roboto";
+  font-family: "Roboto";
   font-weight: bold;
   font-size: 60px;
   justify-content: center;
@@ -120,7 +120,7 @@ header{
 
 .subheader{
   color: #8F8073;
-  font-family: "roboto";
+  font-family: "Roboto";
   font-weight: bold;
   font-size: 40px;
   padding:0 330px;
@@ -128,7 +128,7 @@ header{
 } */
 /* .character{
   color: #DADADA;
-  font-family: "roboto";
+  font-family: "Roboto";
   font-weight: bold;
   font-size: 20px;
   padding:0 330px;
@@ -140,7 +140,7 @@ header{
 /* text{
   background-color: black;
   color: black;
-  font-family: "roboto";
+  font-family: "Roboto";
   font-weight: bold;
   font-size: 50px;
   text-align: center;

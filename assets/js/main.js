@@ -45,7 +45,7 @@ function selectOption(option) {
   }
 
   if (currentBalance <=0) {
-    nextTextNodeId = 18;
+    nextTextNodeId = 19;
   }
   if (option.acctChange) {
     currentBalance += option.acctChange;
@@ -91,7 +91,7 @@ const textNodes = [{
     text:'As such, many residents of Charlotte work off of minimum wage and  are forced to live paycheck to paycheck. This reality is not so easy to endure.' + "\n"  + 'How well will you survive when the odds are stacked against you...?',
     options: [{
       text: 'Start Challenge',
-      nextText: 5, 
+      nextText: 5,
     }, ]
   },
 
@@ -153,7 +153,7 @@ const textNodes = [{
         acctChange: -35
       },
       {
-        text: 'Balance: ' + currentBalance + "\n" + 'Public Transportation | Ticket: $22.5 per week // $85 per month',
+        text: 'Public Transportation | Ticket: $22.5 per week // $85 per month',
         setState: {
           transportation: false
         },
@@ -210,7 +210,7 @@ const textNodes = [{
     },
     options: [{
       text: 'Pay $100 on food and essentials',
-      nextText: 10,
+      nextText: 18,
       acctChange: -100,
     }]
   },
@@ -228,7 +228,7 @@ const textNodes = [{
       },
       {
         text: 'Take public transportation',
-        setState: (currentState) => currentState.public,
+        changeState: (currentState) => currentState.public,
         nextText: 9
       },
 
@@ -236,6 +236,7 @@ const textNodes = [{
   },
   {
     id: 13,
+    requiredState: (currentState) => currentState.car,
     text: "",
     balance: function(){
       return 'Balance: ' + currentBalance + "\n" + 'You must pay $20 to pick up your child with a ridesharing app after your flat tire.';
@@ -296,16 +297,33 @@ const textNodes = [{
     },
     options: [{
       text: 'Pay $250 in replacements of essential items',
-      nextText: 18,
+      nextText: 19,
       acctChange: -250,
     }]
   },
+{
+  id: 18,
+  requiredState: (currentState) => currentState.public,
+  text: "",
+  balance: function(){
+    return'Balance: ' + currentBalance + "\n" + 'Nice, you found $20 on your way home from work.';
+  },
+  options: [{
+      text: 'Take the $20 and receive it as a blessings.',
+      nextText: 14,
+      acctChange: 20
+    },
+    {
+      text: 'Leave it for the next person. Maybe the owner will come back for it.',
+      nextText: 14,
+      acctChange: -0
+    },
 
-
-
+  ]
+},
 
   {
-    id: 18,
+    id: 19,
     text: "",
     balance: function(){
       return 'Balance: ' + currentBalance + "\n" + 'Oh no, you ran out of money!';
