@@ -10,14 +10,33 @@ function startStacked() {
 }
 
 function showTextNode(textNodeIndex) {
+  // get data
   const textNode = textNodes.find(textNode => textNode.id === textNodeIndex);
 
-  if (textNode.text == '') {
-    textElement.innerText = textNode.balance();
+  let html = "";
+  let description = "";
 
-  } else {
-    textElement.innerText = textNode.text;
+  if (textNode.title) {
+    html + "<h2>" + textNode.title + "</h2>";
   }
+
+  // if image
+  if (textNode.image && textNode.image !== '') {
+    html += textNode.title + "<div><img class='mainImage' src = 'assets/img/" + textNode.image + "'></div>";
+  }
+
+  // text
+  if (textNode.text == '') {
+    html +=  textNode.balance() +'<br>'+  textNode.description;
+  } else {
+    html += textNode.text;
+  }
+
+
+  document.getElementById("text").innerHTML = html;
+
+
+  // butttons
   while (optionButtonsElement.firstChild) {
     optionButtonsElement.removeChild(optionButtonsElement.firstChild);
   }
@@ -44,7 +63,7 @@ function selectOption(option) {
     return startStacked();
   }
 
-  if (currentBalance <=0) {
+  if (currentBalance <= 0) {
     nextTextNodeId = 19;
   }
   if (option.acctChange) {
@@ -64,6 +83,8 @@ function selectOption(option) {
 
 const textNodes = [{
     id: 1,
+    title: '',
+    image: "finalStacked.png",
     text: 'A child born into poverty in Charlotte, NC will most likely die in poverty...',
     options: [{
       text: 'Continue',
@@ -72,6 +93,8 @@ const textNodes = [{
   },
   {
     id: 2,
+    title: '',
+    image: "finalStacked.png",
     text: 'In Charlotte, NC, an estimated 11.9% of the population live below the poverty line...',
     options: [{
       text: 'Continue',
@@ -80,6 +103,8 @@ const textNodes = [{
   },
   {
     id: 3,
+    title: '',
+    image: "finalStacked.png",
     text: 'Among the most affected demographics in poverty are Blacks (44%), Whites (31%), and Hispanics (26%), with female populations especially vulnerable.',
     options: [{
       text: 'Continue',
@@ -88,7 +113,9 @@ const textNodes = [{
   },
   {
     id: 4,
-    text:'As such, many residents of Charlotte work off of minimum wage and  are forced to live paycheck to paycheck. This reality is not so easy to endure.' + "\n"  + 'How well will you survive when the odds are stacked against you...?',
+    title: '',
+    image: "finalStacked.png",
+    text: 'As such, many residents of Charlotte work off of minimum wage and  are forced to live paycheck to paycheck. This reality is not so easy to endure.' + "\n" + 'How well will you survive when the odds are stacked against you...?',
     options: [{
       text: 'Start Challenge',
       nextText: 5,
@@ -97,10 +124,10 @@ const textNodes = [{
 
   {
     id: 5,
-    text: "",
-    balance: function() {
-      return 'Balance: ' + currentBalance + "\n" + 'Great, you are a 28 year old single parent of one.  In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Dinner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt. ' + "\n" + 'You have one week left until your next paycheck. Are you ready to start the challenge?';
-    },
+    text: '',
+    title: "CHARACTER: SINGLE PARENT OF ONE",
+    image: "myProfile.png",
+    description: 'Great, you are a 28 year old single parent of one.  In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Diner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt. ' + "\n" + 'You have one week left until your next paycheck. Are you ready to start the challenge?',
     options: [{
         text: 'Challenge Accepted',
         setState: {
@@ -112,14 +139,19 @@ const textNodes = [{
         // }
 
       },
-
-    ]
+    ],
+    balance: function() {
+      return 'Balance: $' + currentBalance + '\n';
+    },
   },
   {
     id: 6,
     text: "",
+    title: "CHOOSE YOUR HOUSING",
+    description:'',
+    image: "myHousing.png",
     balance: function() {
-      return 'Balance: ' + currentBalance + "\n" + 'Choose Your Housing';
+      return 'Balance: $' + currentBalance + '\n';
 
     },
     options: [{
@@ -137,11 +169,14 @@ const textNodes = [{
   {
     id: 7,
     text: "",
+    title: "CHOOSE YOUR TRANSPORTATION",
+    description:'',
+    image: "transportChoices.png",
     balance: function() {
-      return 'Balance: ' + currentBalance + "\n" + 'Choose your Transportation';
+      return 'Balance: $' + currentBalance + "\n";
     },
     options: [{
-        text: 'Car | Gas: $35 per week // $140 per month',
+        text: 'Personal Vehicle | Gas: $35 per week // $140 per month',
         setState: {
           transportation: true
         },
@@ -170,9 +205,12 @@ const textNodes = [{
   {
     id: 8,
     requiredState: (currentState) => currentState.car,
-    text: "",
+    text: '',
+    title: 'CAR',
+    description:'Nice, you invested in your own vehicle and now you can commute comfortably. You have more agency to  meet all of your destination needs.',
+    image: "myCar.png",
     balance: function() {
-      return 'Balance: ' + currentBalance + "\n" + 'Nice, you invested in your own vehicle and now you can commute comfortably. You have more agency to  meet all of your destination needs.';
+      return 'Balance: $' + currentBalance;
     },
     options: [{
       text: 'Continue',
@@ -182,8 +220,11 @@ const textNodes = [{
   {
     id: 9,
     text: "",
+    description:'Congratulations, you saved money on gas! However, in Charlotte, the public transportation system is unreliable when you need to travel outside the Downtown area. Please manage your time wisely!',
+    title: "Public Transportation",
+    image:'myPublic.png',
     balance: function() {
-      return 'Balance: ' + currentBalance + "\n" + 'Congratulations, you saved money on gas! However, in Charlotte, the public transportation system is unreliable when you need to travel outside the Downtown area. Please manage your time wisely!';
+      return 'Balance: $'+ currentBalance ;
     },
     options: [{
       text: 'Continue',
@@ -192,9 +233,12 @@ const textNodes = [{
   },
   {
     id: 10,
+    title: "ALERT",
     text: "",
+    description:'Your water bill is due today',
+    image: "myWater.png",
     balance: function() {
-      return 'Balance: ' + currentBalance + "\n" + 'Alert: Your water bill is due today';
+      return 'Balance: $' + currentBalance;
     },
     options: [{
       text: 'Pay the $50 to cut it back on',
@@ -204,9 +248,12 @@ const textNodes = [{
   },
   {
     id: 11,
-    text:"",
-    balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'Alert: Time for your weekly groceries!';
+    text: "",
+    title: "ALERT",
+    description:'Time for your weekly groceries!',
+    image: "myGroceries.png",
+    balance: function() {
+      return 'Balance: $' + currentBalance;
     },
     options: [{
       text: 'Pay $100 on food and essentials',
@@ -218,8 +265,11 @@ const textNodes = [{
     id: 12,
     requiredState: (currentState) => currentState.car,
     text: "",
-    balance: function(){
-      return'Balance: ' + currentBalance + "\n" + 'Oh no, your car caught a flat tire on your way to your destination.';
+    title: "ALERT",
+    image: "myAlert.png",
+    description:'Oh no, your car caught a flat tire on your way to your destination.',
+    balance: function() {
+      return 'Balance: $' + currentBalance;
     },
     options: [{
         text: 'Replace tire for $60',
@@ -236,10 +286,13 @@ const textNodes = [{
   },
   {
     id: 13,
-    requiredState: (currentState) => currentState.car,
     text: "",
-    balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'You must pay $20 to pick up your child with a ridesharing app after your flat tire.';
+    requiredState: (currentState) => currentState.car,
+    title: "ALERT",
+    image:"myFamily.png",
+    description:'You must pay $20 to pick up your child with a ridesharing app after your flat tire.',
+    balance: function() {
+      return 'Balance: $' + currentBalance;
     },
     options: [{
       text: 'Continue',
@@ -249,9 +302,12 @@ const textNodes = [{
   },
   {
     id: 14,
-    text:"",
-    balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'Your employers offer you the opportunity to get overtime (OT) for a time and a half. This could increase your earnings by $22. However, you will spend less time with your child.';
+    text: "",
+    title: 'ALERT',
+    image: "myJob.png",
+    description:'Your employers offer you the opportunity to get overtime (OT) for a time and a half. This could increase your earnings by $22. However, you will spend less time with your child.',
+    balance: function() {
+      return 'Balance: $' + currentBalance ;
     },
     options: [{
         text: 'Accept Offer',
@@ -266,9 +322,13 @@ const textNodes = [{
   },
   {
     id: 15,
-    text:"",
-    balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'Oh no, your bus was delayed and you were 3 hours late to work! You lost $30 in expected tips.';
+    requiredState: (currentState) => currentState.public,
+    text: "",
+    title:'ALERT',
+    image:'myAlert.png',
+    description:'Oh no, your bus was delayed and you were 3 hours late to work! You lost $30 in expected tips.',
+    balance: function() {
+      return 'Balance: $' + currentBalance;
     },
     options: [{
       text: 'Deduct $30',
@@ -278,9 +338,12 @@ const textNodes = [{
   },
   {
     id: 16,
-    text:"",
-    balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'While at work, a generous customer left you a $50 tip! Small blessings :)';
+    text: "",
+    title:'ALERT',
+    image: 'myMoney.png',
+    description:'While at work, a generous customer left you a $50 tip! Small blessings!',
+    balance: function() {
+      return 'Balance: ' + currentBalance;
     },
     options: [{
       text: 'Continue',
@@ -292,8 +355,11 @@ const textNodes = [{
   {
     id: 17,
     text: "",
-    balance: function(){
-      return'Balance: ' + currentBalance + "\n" + 'Oh no, your house was burglared!';
+    title:"ALERT",
+    image: 'myAlert.png',
+    description:'Oh no, your house was burglared!',
+    balance: function() {
+      return 'Balance: $' + currentBalance;
     },
     options: [{
       text: 'Pay $250 in replacements of essential items',
@@ -301,32 +367,38 @@ const textNodes = [{
       acctChange: -250,
     }]
   },
-{
-  id: 18,
-  requiredState: (currentState) => currentState.public,
-  text: "",
-  balance: function(){
-    return'Balance: ' + currentBalance + "\n" + 'Nice, you found $20 on your way home from work.';
-  },
-  options: [{
-      text: 'Take the $20 and receive it as a blessings.',
-      nextText: 14,
-      acctChange: 20
+  {
+    id: 18,
+    requiredState: (currentState) => currentState.public,
+    text: "",
+    title:"ALERT",
+    description:'Nice, you found $20 on your way home from work.',
+    image: "myMoney.png",
+    balance: function() {
+      return 'Balance: ' + currentBalance;
     },
-    {
-      text: 'Leave it for the next person. Maybe the owner will come back for it.',
-      nextText: 14,
-      acctChange: -0
-    },
+    options: [{
+        text: 'Take the $20 and receive it as a blessing.',
+        nextText: 14,
+        acctChange: 20
+      },
+      {
+        text: 'Leave it for the next person.',
+        nextText: 14,
+        acctChange: -0
+      },
 
-  ]
-},
+    ]
+  },
 
   {
     id: 19,
     text: "",
-    balance: function(){
-      return 'Balance: ' + currentBalance + "\n" + 'Oh no, you ran out of money!';
+    title:'CHALLENGE UNSUCCESSFUL',
+    description:'Oh no, you ran out of money!',
+    image:'myChallenge.png',
+    balance: function() {
+      return 'Balance: $' + currentBalance;
     },
     options: [{
       text: 'Restart Challenge',

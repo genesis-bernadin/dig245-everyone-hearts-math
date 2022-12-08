@@ -30,6 +30,10 @@ body{
 
 }
 
+.mainImage {
+  max-width: 400px;
+}
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -41,7 +45,12 @@ body{
 		background-position: 0% 50%;
 	}
 }
+.mainImage{
+  text-align: center;
+  text-align: center;
+  vertical-align: middle;
 
+}
 
 .container{
   width: 800px;
@@ -52,7 +61,7 @@ body{
 }
 
 .center {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   padding:0 200px;
@@ -88,12 +97,13 @@ body{
   outline: none;
 }
 
-/* h2{
-  color: #8F8073;
+ h2{
+  color: black;
   font-family: "Roboto";
   font-weight: bold;
-  font-size: 50px;
+  font-size: 100px;
   justify-content: center;
+  text-align: center;
   padding:0 200px;
 
 }
