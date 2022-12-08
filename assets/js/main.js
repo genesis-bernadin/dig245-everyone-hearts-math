@@ -17,19 +17,19 @@ function showTextNode(textNodeIndex) {
   let description = "";
 
   if (textNode.title) {
-    html + "<h2>" + textNode.title + "</h2>";
+    html += "<h2>" + textNode.title + "</h2>";
   }
 
   // if image
   if (textNode.image && textNode.image !== '') {
-    html += textNode.title + "<div><img class='mainImage' src = 'assets/img/" + textNode.image + "'></div>";
+    html +=  "<div><img class='mainImage' src = 'assets/img/" + textNode.image + "'></div>";
   }
 
   // text
   if (textNode.text == '') {
-    html +=  textNode.balance() +'<br>'+  textNode.description;
+    html +=  textNode.balance() +'<br>'+  "<h3>"+ textNode.description + "<h3";
   } else {
-    html += textNode.text;
+    html +=  "<h3>"+textNode.text + "<h3>";
   }
 
 
@@ -85,6 +85,7 @@ const textNodes = [{
     id: 1,
     title: '',
     image: "finalStacked.png",
+
     text: 'A child born into poverty in Charlotte, NC will most likely die in poverty...',
     options: [{
       text: 'Continue',
@@ -235,7 +236,7 @@ const textNodes = [{
     id: 10,
     title: "ALERT",
     text: "",
-    description:'Your water bill is due today',
+    description:'Your water bill is due today!',
     image: "myWater.png",
     balance: function() {
       return 'Balance: $' + currentBalance;
