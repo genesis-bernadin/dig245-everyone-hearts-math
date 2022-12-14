@@ -4,14 +4,16 @@
   box-sizing: border-box;
   font-family: "Roboto";
   text-align: center;
+  justify-content: center;
 }
 html{
-  background-color: #12130F;
-  color: #12130F;
+  background-color: black;
+  color: black;
   background: linear-gradient(-45deg, #000000, #D9D9D9, #5B9279, #5B9279);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
-	height: 100vh;
+
+
 }
 body{
   background-color: black;
@@ -24,12 +26,14 @@ body{
   background: linear-gradient(-45deg, #000000, #D9D9D9, #5B9279, #5B9279);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
-	/* height: 100vh; */
+  padding-top: 5%;
+  padding-bottom: 5%;
+
 
 }
 
 .mainImage {
-  max-width: 400px;
+  max-width: 350px;
 }
 
 @keyframes gradient {
@@ -57,29 +61,26 @@ body{
 
 }
 
-.center {
+/* .center {
   display: none;
-  justify-content: center;
-  align-items: center;
   padding:0 200px;
-  justify-content: center;
   outline: none;
 
-}
+} */
 .button{
   display: flex;
   justify-content: center;
   padding:0 280px;
-  text-align: center;
-  vertical-align: middle;
+  /* text-align: center;
+  vertical-align: middle; */
 }
 .btn-grid {
   display: grid;
   grid-template-columns: repeat(2, auto);
   gap: 10px;
   margin-top: 20px;
-  text-align: center;
-  align-items: center;
+  /* text-align: center;
+  align-items: center; */
 }
 
 .btn {
@@ -134,14 +135,7 @@ header{
   padding:0 330px;
 
 } */
-/* .character{
-  color: #DADADA;
-  font-family: "Roboto";
-  font-weight: bold;
-  font-size: 20px;
-  padding:0 330px;
 
-} */
 
 
 

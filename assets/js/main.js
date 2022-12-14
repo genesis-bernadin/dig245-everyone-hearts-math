@@ -128,7 +128,7 @@ const textNodes = [{
     text: '',
     title: "CHARACTER: SINGLE PARENT OF ONE",
     image: "myProfile.png",
-    description: 'Great, you are a 28 year old single parent of one.  In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Diner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt. ' + "\n" + 'You have one week left until your next paycheck. Are you ready to start the challenge?',
+    description: 'Great, you are a 28 year old single parent of one.  In order to live comfortably, you work 40 hours a week as a waitress at Joe’s Diner. In addition, to commuting to work you must take your child to and from school. You cannot afford childcare so you must be prompt. ' + '\n' + 'You have one week left until your next paycheck. Are you ready to start the challenge?',
     options: [{
         text: 'Challenge Accepted',
         setState: {
